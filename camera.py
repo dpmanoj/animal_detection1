@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture("rtsp://anshan:A_shan11@192.168.225.50:80/ISAPI/Streaming/channels/101")
+cap = cv2.VideoCapture("rtsp://anshan:A_shan11@192.168.225.50:80/ISAPI/Streaming/channels/301")
 
 while (cap.isOpened()):
     ret , frame = cap.read()
