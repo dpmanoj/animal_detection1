@@ -1,5 +1,7 @@
 # Animal Detection
 
+### Being developed
+
 ## Overview
 
 Welcome to the Animal Detection project. This is the deep learning model that was trained to detect various stray animals and wild animals that we might encounter. I have used the MobileNet V2 boject detection model and trained it to detect both stray and wild animals.
