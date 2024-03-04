@@ -2,7 +2,6 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import numpy as np
 import tensorflow as tf
-import cv2
 from cv2 import imshow
 
 from official.vision.utils.object_detection import visualization_utils as vis_util
@@ -23,20 +22,10 @@ category_index = {
 class detection:
 
     def __init__(self):
-
         self.model = tf.saved_model.load('mobilenet/saved_model/')
 
 
     def run_inference_for_single_frame(self, frame):
-
-        ## if you have hosted your model in another server, you can use below code
-
-        # json_response = requests.post(self.url, data=frame)
-        # response = json.loads(json_response.text)
-        # output_dict = response['predictions'][0]
-        # output_dict['detection_classes'] = np.array(output_dict['detection_classes'], dtype=np.int64)
-
-
 
         ## if you have hosted your model in your local machine, you can use below code
         image = np.asarray(frame)
@@ -84,15 +73,6 @@ class detection:
                 detection_classes.append(output_dict['detection_classes'][i])
                 detection_scores.append(output_dict['detection_scores'][i])
                 detection_boxes.append(output_dict['detection_boxes'][i])
-        
-        ##sends the message using SMS API
-        # self.sendMessage(detection_classes)
-        return detection_boxes, detection_scores, detection_classes
-        
-    
-    def sendMessage(self, classes):
-        ## you can add your logic to send SMS message here
-        pass
 
     
     def visual(self, frame, boxes, classes, scores, new_id=None):
