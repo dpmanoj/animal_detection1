@@ -1,26 +1,30 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import requests
-import json
 import numpy as np
 import tensorflow as tf
+import cv2
 from cv2 import imshow
 
-from object_detection.utils import ops as utils_ops
-from object_detection.utils import label_map_util
-from object_detection.utils import visualization_utils as vis_util
+from official.vision.utils.object_detection import visualization_utils as vis_util
+from official.vision.utils.object_detection import ops as utils_ops
+
+category_index = {
+    1: {'id': 1, 'name': 'boar'}, 
+    2: {'id': 2, 'name': 'buffalo'}, 
+    3: {'id': 3, 'name': 'cow/bull'}, 4: 
+    {'id': 4, 'name': 'dog'}, 
+    5: {'id': 5, 'name': 'elephant'}, 
+    6: {'id': 6, 'name': 'leopard'}, 
+    7: {'id': 7, 'name': 'monkey'}, 
+    8: {'id': 8, 'name': 'snake'}, 
+    9: {'id': 9, 'name': 'tiger'}, 
+    10: {'id': 10, 'name': 'other'}}
 
 class detection:
 
     def __init__(self):
 
-        # self.url = 'http://localhost:8501/v1/models/xada_gai:predict'
-
-        self.model = tf.saved_model.load('saved_model/')
-
-
-        PATH_TO_LABELS = 'saved_model/1/label_map.pbtxt'
-        self.category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
+        self.model = tf.saved_model.load('mobilenet/saved_model/')
 
 
     def run_inference_for_single_frame(self, frame):
@@ -99,7 +103,7 @@ class detection:
                 boxes,
                 classes,
                 scores,
-                self.category_index,
+                category_index,
                 instance_masks=None,
                 use_normalized_coordinates=True,
                 line_thickness=4,

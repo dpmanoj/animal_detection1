@@ -1,0 +1,49 @@
+item{
+    id: 1
+    name: 'boar'
+}
+
+item{
+    id: 2
+    name: 'buffalo'
+}
+
+item{
+    id: 3
+    name: 'cow/bull'
+}
+
+item{
+    id: 4
+    name: 'dog'
+}
+
+item{
+    id: 5
+    name: 'elephant'
+}
+
+item{
+    id: 6
+    name: 'leopard'
+}
+
+item{
+    id: 7
+    name: 'monkey'
+}
+
+item{
+    id: 8
+    name: 'snake'
+}
+
+item{
+    id:9
+    name: 'tiger'
+}
+
+item{
+    id: 10
+    name: 'other'
+}

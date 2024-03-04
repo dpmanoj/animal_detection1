@@ -5,7 +5,7 @@ import time
 
 detector = detection()
 
-video_path = "[ Path to video you want to detect]"
+video_path = "data/tiger.mp4"
 video = cv2.VideoCapture(video_path)
 
 while video.isOpened():
@@ -14,8 +14,8 @@ while video.isOpened():
 
     if ret:
 
-        image_w, image_h, _ = frame.shape
-        image = frame.reshape(1, image_w, image_h, 3)
+        # image_w, image_h, _ = frame.shape
+        # image = frame.reshape(1, image_w, image_h, 3)
 
         ## below code is required if your model is hosted in another server
         ## it does preprocessing for you before sending it throung http request 
@@ -25,7 +25,7 @@ while video.isOpened():
         #     "instances": image.tolist()
         # })
 
-        boxes, scores, classe = detector.predict(image)
+        boxes, scores, classe = detector.predict(frame)
         detector.visual(frame, boxes, classe, scores)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
