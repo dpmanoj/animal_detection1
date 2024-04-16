@@ -73,7 +73,7 @@ class detection:
                 detection_classes.append(output_dict['detection_classes'][i])
                 detection_scores.append(output_dict['detection_scores'][i])
                 detection_boxes.append(output_dict['detection_boxes'][i])
-
+        return detection_boxes, detection_scores, detection_classes
     
     def visual(self, frame, boxes, classes, scores, new_id=None):
 

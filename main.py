@@ -5,7 +5,7 @@ import time
 
 detector = detection()
 
-video_path = "data/tiger.mp4"
+video_path = "data/elephant.mp4"
 video = cv2.VideoCapture(video_path)
 
 while video.isOpened():
